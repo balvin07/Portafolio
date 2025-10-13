@@ -11,9 +11,10 @@
     h1{margin:10px 0 5px;font-size:2.2em}
     h2{color:#0d47a1}
     .container{max-width:900px;margin:auto;padding:20px}
-    .card{background:#fff;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.1);margin:20px 0;padding:25px;display:flex;gap:20px;align-items:center}
-    .card img{width:180px;border-radius:6px}
+    .card{background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.15);margin:20px 0;padding:25px;display:flex;gap:20px;align-items:center}
+    .card img{width:180px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.15);}
     .btn{display:inline-block;background:#0d47a1;color:#fff;padding:10px 20px;border-radius:4px;text-decoration:none;margin-top:10px}
+    .btn:hover{background:#08368a}
     footer{text-align:center;padding:30px;font-size:.9em;color:#666}
   </style>
 </head>
@@ -33,23 +34,25 @@
 
   <h2>Proyectos destacados</h2>
 
+  <!-- Card Spotify -->
   <div class="card">
-    <img src="https://github.com/balvin07/hotel/raw/main/screenshots/screenshot_form.png" alt="Hotel" style="border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.15);">
-<div style="margin-left:20px;">
-  <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/hotelsdotcom.svg" width="40" style="vertical-align:middle;margin-right:10px;">
-  <span style="font-size:1.4em;color:#0d47a1;">Hotel Estelar</span>
-</div>
+    <img src="https://github.com/balvin07/Proyecto-Spotify/raw/main/screenshots/correlation_heatmap.png" alt="Spotify">
     <div>
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/spotify.svg" width="40" style="vertical-align:middle;margin-right:10px;">
+      <span style="font-size:1.4em;color:#1DB954;">Spotify</span>
       <h3>¿Qué hace viral a Shakira?</h3>
       <p>Modelo Random Forest que predice éxito de canciones con 85 % accuracy usando API de Spotify.</p>
       <a class="btn" href="https://github.com/balvin07/Proyecto-Spotify" target="_blank">Ver repo</a>
     </div>
   </div>
 
+  <!-- Card Hotel -->
   <div class="card">
     <img src="https://github.com/balvin07/hotel/raw/main/screenshots/screenshot_form.png" alt="Hotel">
     <div>
-      <h3>Encuestas Hotel</h3>
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/hotelsdotcom.svg" width="40" style="vertical-align:middle;margin-right:10px;">
+      <span style="font-size:1.4em;color:#0d47a1;">Hotel Estelar</span>
+      <h3>Encuestas Hotel Estelar</h3>
       <p>App Django que reemplaza formularios papel por un formulario responsive con estrellas.</p>
       <a class="btn" href="https://github.com/balvin07/hotel" target="_blank">Ver repo</a>
     </div>
