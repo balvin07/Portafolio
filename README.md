@@ -1,1 +1,2 @@
-portfolio, python, django, machine-learning, web-development, junior-developer
+Portfolio
+Python, Django, mMachine-Learning, Web-Development, Junior-Developer
