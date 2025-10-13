@@ -22,11 +22,11 @@
     .card{display:flex;gap:25px;align-items:center;background:#1a1a1a;border-radius:16px;padding:30px;transition:transform .3s,box-shadow .3s}
     .card:hover{transform:translateY(-8px);box-shadow:0 12px 30px rgba(0,0,0,.5)}
     .card img{width:200px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.4)}
-    .card div{flex:1}
+    .card div{flex:1;display:flex;align-items:center;gap:10px}
     .card h3{font-size:1.6em;margin-bottom:8px}
     .card p{opacity:.85;margin-bottom:15px}
-    .btn-repo{background:var(--spotify);color:#fff;padding:10px 24px;border-radius:25px;text-decoration:none;font-weight:600;display:inline-block;transition:.3s}
-    .btn-repo:hover{filter:brightness(1.15)}
+    .btn-repo{background:var(--spotify);color:#fff;padding:8px 20px;border-radius:20px;text-decoration:none;font-weight:600;font-size:.9em;transition:.3s}
+    .btn-repo:hover{filter:brightness(1.1)}
     .hotel .btn-repo{background:var(--hotel)}
     footer{text-align:center;padding:40px;font-size:.9em;opacity:.7}
   </style>
@@ -52,9 +52,11 @@
   <!-- Spotify -->
   <div class="card">
     <img src="https://github.com/balvin07/Proyecto-Spotify/raw/main/screenshots/correlation_heatmap.png" alt="Spotify">
-    <div>
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/spotify.svg" width="40" style="vertical-align:middle;margin-right:10px;">
-      <span style="font-size:1.4em;color:#1DB954;">Spotify</span>
+    <div style="flex:1;display:flex;align-items:center;gap:10px;">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/spotify.svg" width="24" style="vertical-align:middle;">
+      <span style="font-size:1.2em;color:#1DB954;font-weight:600;">Spotify</span>
+    </div>
+    <div style="flex:2;">
       <h3>¿Qué hace viral a Shakira?</h3>
       <p>Modelo Random Forest que predice éxito de canciones con 85 % accuracy usando API de Spotify.</p>
       <a class="btn-repo" href="https://github.com/balvin07/Proyecto-Spotify" target="_blank">Ver repo</a>
@@ -64,9 +66,11 @@
   <!-- Hotel -->
   <div class="card hotel">
     <img src="https://github.com/balvin07/hotel/raw/main/screenshots/screenshot_form.png" alt="Hotel">
-    <div>
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/hotelsdotcom.svg" width="40" style="vertical-align:middle;margin-right:10px;">
-      <span style="font-size:1.4em;color:#0d47a1;">Hotel</span>
+    <div style="flex:1;display:flex;align-items:center;gap:10px;">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/hotelsdotcom.svg" width="24" style="vertical-align:middle;">
+      <span style="font-size:1.2em;color:#FF6B35;font-weight:600;">Hotel</span>
+    </div>
+    <div style="flex:2;">
       <h3>Encuestas Hotel</h3>
       <p>App Django que reemplaza formularios papel por un formulario responsive con estrellas.</p>
       <a class="btn-repo" href="https://github.com/balvin07/hotel" target="_blank">Ver repo</a>
