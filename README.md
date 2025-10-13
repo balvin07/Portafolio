@@ -1,2 +1,1 @@
-# Portafolio
-Portfolio de Juan David Balvin – Técnico IT &amp; Desarrollador Python | Django | Machine Learning
+portfolio, python, django, machine-learning, web-development, junior-developer
