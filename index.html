@@ -40,6 +40,15 @@
     .hotel .project-badge{background:rgba(255,107,53,.15);border-color:var(--hotel)}
     .hotel .project-badge span{color:var(--hotel)}
     footer{text-align:center;padding:40px 20px;font-size:.9em;opacity:.7;width:100%;display:block}
+
+    /* ✅ Correcciones clave */
+    header::after {
+      pointer-events: none; /* Evita que la animación bloquee los clics */
+    }
+    header a {
+      position: relative;
+      z-index: 10; /* Asegura que los botones estén por encima */
+    }
   </style>
 </head>
 <body>
@@ -48,14 +57,14 @@
   <img src="https://github.com/balvin07.png" alt="Foto">
   <h1>Juan David Balvin</h1>
   <p>Técnico IT · Desarrollador Python · Autodidacta</p>
-  <a class="btn-glow" href="https://www.linkedin.com/in/juan-david-balvin-71635a276" target="_blank">LinkedIn</a>
-  <a class="btn-glow" href="https://github.com/balvin07" target="_blank">GitHub</a>
+  <a class="btn-glow" href="https://www.linkedin.com/in/juan-david-balvin-71635a276" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  <a class="btn-glow" href="https://github.com/balvin07" target="_blank" rel="noopener noreferrer">GitHub</a>
 </header>
 
 <div class="container">
   <h2>Sobre mí</h2>
   <p style="text-align:center;max-width:700px;margin:auto;font-size:1.1em;opacity:.9">
-    Apasionado por resolver problemas reales con código. Reduje fallos de hardware en un 30 % y automatizo reportes con Pandas. Busco mi primer rol junior donde pueda aportar scripts, dashboards o soporte técnico con visión de datos.
+    Apasionado por resolver problemas reales con código. Reduje fallos de hardware en un 30 % y automatizo reportes con Pandas y las diferentes librerias de python para el analisis de datos. Busco mi primer rol junior donde pueda aportar scripts, dashboards o soporte técnico con visión de datos.
   </p>
 
   <h2>Habilidades</h2>
@@ -112,7 +121,7 @@
     </div>
     <h3>¿Qué hace viral a Shakira?</h3>
     <p>Modelo Random Forest que predice éxito de canciones con 85 % accuracy usando API de Spotify.</p>
-    <a class="btn-repo" href="https://github.com/balvin07/Proyecto-Spotify" target="_blank">Ver repo</a>
+    <a class="btn-repo" href="https://github.com/balvin07/Proyecto-Spotify" target="_blank" rel="noopener noreferrer">Ver repo</a>
   </div>
 
   <!-- Hotel -->
@@ -123,7 +132,7 @@
     </div>
     <h3>Encuestas Hotel</h3>
     <p>App Django que reemplaza formularios papel por un formulario responsive con estrellas.</p>
-    <a class="btn-repo" href="https://github.com/balvin07/hotel" target="_blank">Ver repo</a>
+    <a class="btn-repo" href="https://github.com/balvin07/hotel" target="_blank" rel="noopener noreferrer">Ver repo</a>
   </div>
 
   <h2>Contacto</h2>
