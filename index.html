@@ -6,24 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
-    :root{--spotify:#1DB954;--hotel:#FF6B35;--grad:linear-gradient(135deg,#667eea 0%,#764ba2 100%)}
+    :root{--spotify:#1DB954;--hotel:#FF6B35;--iot:#00D4FF;--grad:linear-gradient(135deg,#667eea 0%,#764ba2 100%)}
     *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif}
     body{background:#111;color:#eee;scroll-behavior:smooth}
     header{height:60vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:var(--grad);color:#fff;position:relative;overflow:hidden}
-    header::after{content:'';position:absolute;width:200%;height:200%;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff10" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;animation:wave 10s linear infinite}
+    header::after{content:'';position:absolute;width:200%;height:200%;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff10" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;animation:wave 10s linear infinite;pointer-events:none}
     @keyframes wave{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
     header img{width:160px;border-radius:50%;border:5px solid #fff;box-shadow:0 8px 25px rgba(0,0,0,.3)}
     h1{font-size:3em;margin:15px 0 5px}
     header p{font-size:1.2em;opacity:.9}
-    .btn-glow{background:#fff;color:#764ba2;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:700;box-shadow:0 0 20px rgba(255,255,255,.5);transition:.3s;margin:5px}
+    .btn-glow{background:#fff;color:#764ba2;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:700;box-shadow:0 0 20px rgba(255,255,255,.5);transition:.3s;margin:5px;position:relative;z-index:10}
     .btn-glow:hover{box-shadow:0 0 35px rgba(255,255,255,.8);transform:translateY(-2px)}
     .container{max-width:1000px;margin:auto;padding:80px 20px}
     h2{background:linear-gradient(90deg,var(--spotify),var(--hotel));-webkit-background-clip:text;-webkit-text-fill-color:transparent;padding-bottom:5px;text-shadow:0 0 15px rgba(255,255,255,.25);margin:40px auto 30px;text-align:center;display:block}
-    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:15px;margin:30px 0;max-width:800px;margin-left:auto;margin-right:auto}
-    .skill-card{background:#1a1a1a;border-radius:10px;padding:12px 8px;text-align:center;transition:.3s;border:1px solid transparent}
-    .skill-card:hover{transform:translateY(-5px);border-color:var(--spotify);box-shadow:0 8px 20px rgba(29,185,84,.2)}
-    .skill-card img{width:12px;height:12px;margin-bottom:6px;filter:brightness(0) invert(1);opacity:.8}
-    .skill-card p{font-size:.8em;font-weight:500;color:#eee}
+    
+    /* Skills principales */
+    .skills-main{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px;margin:30px auto;max-width:800px}
+    .skill-main-card{background:#1a1a1a;border-radius:12px;padding:20px;text-align:center;transition:.3s;border:2px solid transparent;cursor:pointer;position:relative}
+    .skill-main-card:hover{transform:translateY(-5px);border-color:var(--spotify);box-shadow:0 8px 20px rgba(29,185,84,.3)}
+    .skill-main-card img{width:48px;height:48px;margin-bottom:10px;filter:brightness(0) invert(1);opacity:.9}
+    .skill-main-card h3{font-size:1.1em;font-weight:600;color:#fff;margin:0}
+    .skill-main-card p{font-size:.75em;color:#888;margin-top:5px}
+    
+    /* Skill desplegable */
+    .skill-expandable{border-color:#666}
+    .skill-expandable::after{content:'▼';position:absolute;top:15px;right:15px;font-size:.9em;color:#888;transition:.3s}
+    .skill-expandable.active::after{transform:rotate(180deg);color:var(--spotify)}
+    .skill-expandable.active{border-color:var(--spotify);background:#1a1a1a}
+    
+    /* Grid de sub-skills */
+    .sub-skills{display:none;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:10px;margin-top:15px;padding-top:15px;border-top:1px solid #333}
+    .sub-skills.show{display:grid;animation:slideDown .3s ease}
+    @keyframes slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+    .sub-skill{background:#151515;border-radius:8px;padding:10px 8px;text-align:center;border:1px solid #222;transition:.2s}
+    .sub-skill:hover{border-color:var(--spotify);transform:scale(1.05)}
+    .sub-skill img{width:28px;height:28px;margin-bottom:6px;filter:brightness(0) invert(1);opacity:.8}
+    .sub-skill p{font-size:.75em;color:#ccc}
+    
     .card{position:relative;overflow:hidden;background:#1a1a1a;border-radius:16px;padding:40px;margin:20px 0;transition:transform .3s,box-shadow .3s}
     .card:hover{transform:translateY(-8px);box-shadow:0 12px 30px rgba(0,0,0,.5)}
     .card::before{content:'';position:absolute;inset:0;border:2px solid transparent;border-radius:16px;background:conic-gradient(var(--spotify),var(--hotel),var(--spotify)) border-box;-webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:rotate 4s linear infinite}
@@ -34,21 +53,19 @@
     .btn-repo::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,#fff,transparent);transition:left .6s}
     .btn-repo:hover::after{left:100%}
     .hotel .btn-repo{background:var(--hotel)}
+    .iot .btn-repo{background:var(--iot)}
     .project-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(29,185,84,.15);border:1px solid var(--spotify);padding:6px 16px;border-radius:20px;margin-bottom:10px;backdrop-filter:blur(10px)}
     .project-badge img{filter:brightness(0) invert(1)}
     .project-badge span{font-size:0.85em;font-weight:600;color:var(--spotify);text-transform:uppercase;letter-spacing:1px}
     .hotel .project-badge{background:rgba(255,107,53,.15);border-color:var(--hotel)}
     .hotel .project-badge span{color:var(--hotel)}
+    .iot .project-badge{background:rgba(0,212,255,.15);border-color:var(--iot)}
+    .iot .project-badge span{color:var(--iot)}
+    .iot::before{background:conic-gradient(var(--iot),#667eea,var(--iot)) border-box}
+    .tech-stack{display:flex;flex-wrap:wrap;gap:8px;margin:15px 0}
+    .tech-tag{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:4px 12px;border-radius:15px;font-size:.75em;color:#aaa;transition:.3s}
+    .tech-tag:hover{background:rgba(0,212,255,.15);border-color:var(--iot);color:var(--iot)}
     footer{text-align:center;padding:40px 20px;font-size:.9em;opacity:.7;width:100%;display:block}
-
-    /* ✅ Correcciones clave */
-    header::after {
-      pointer-events: none; /* Evita que la animación bloquee los clics */
-    }
-    header a {
-      position: relative;
-      z-index: 10; /* Asegura que los botones estén por encima */
-    }
   </style>
 </head>
 <body>
@@ -64,54 +81,129 @@
 <div class="container">
   <h2>Sobre mí</h2>
   <p style="text-align:center;max-width:700px;margin:auto;font-size:1.1em;opacity:.9">
-    Apasionado por resolver problemas reales con código. Reduje fallos de hardware en un 30 % y automatizo reportes con Pandas y las diferentes librerias de python para el analisis de datos. Busco mi primer rol junior donde pueda aportar scripts, dashboards o soporte técnico con visión de datos.
+    Apasionado por resolver problemas reales con código. Reduje fallos de hardware en un 30 % y automatizo reportes con Pandas y las diferentes librerías de Python para el análisis de datos. Busco mi primer rol junior donde pueda aportar scripts, dashboards o soporte técnico con visión de datos.
   </p>
 
   <h2>Habilidades</h2>
-  <div class="skills-grid">
-    <div class="skill-card">
+  <div class="skills-main">
+    <!-- Python -->
+    <div class="skill-main-card">
       <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/python.svg" alt="Python">
-      <p>Python</p>
+      <h3>Python</h3>
+      <p>Core language</p>
     </div>
-    <div class="skill-card">
+
+    <!-- Django -->
+    <div class="skill-main-card">
       <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/django.svg" alt="Django">
-      <p>Django</p>
+      <h3>Django</h3>
+      <p>Web framework</p>
     </div>
-    <div class="skill-card">
+
+    <!-- Bases de Datos -->
+    <div class="skill-main-card">
       <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/postgresql.svg" alt="Databases">
-      <p>Bases de Datos</p>
+      <h3>Bases de Datos</h3>
+      <p>SQL & NoSQL</p>
     </div>
-    <div class="skill-card">
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/pandas.svg" alt="Pandas">
-      <p>Pandas</p>
+
+    <!-- Librerías Data Science - DESPLEGABLE -->
+    <div class="skill-main-card skill-expandable" onclick="toggleSkills('data-libs')">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/pandas.svg" alt="Libraries">
+      <h3>Librerías DS/ML</h3>
+      <p>Clic para ver →</p>
+      <div class="sub-skills" id="data-libs">
+        <div class="sub-skill">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/pandas.svg" alt="Pandas">
+          <p>Pandas</p>
+        </div>
+        <div class="sub-skill">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/numpy.svg" alt="NumPy">
+          <p>NumPy</p>
+        </div>
+        <div class="sub-skill">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/plotly.svg" alt="Matplotlib">
+          <p>Matplotlib</p>
+        </div>
+        <div class="sub-skill">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/plotly.svg" alt="Seaborn">
+          <p>Seaborn</p>
+        </div>
+        <div class="sub-skill">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/scikitlearn.svg" alt="Scikit-learn">
+          <p>Scikit-learn</p>
+        </div>
+        <div class="sub-skill">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/tensorflow.svg" alt="TensorFlow">
+          <p>TensorFlow</p>
+        </div>
+        <div class="sub-skill">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/apachespark.svg" alt="Spark">
+          <p>Apache Spark</p>
+        </div>
+      </div>
     </div>
-    <div class="skill-card">
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/numpy.svg" alt="NumPy">
-      <p>NumPy</p>
-    </div>
-    <div class="skill-card">
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/plotly.svg" alt="Matplotlib">
-      <p>Matplotlib</p>
-    </div>
-    <div class="skill-card">
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/scikitlearn.svg" alt="Seaborn">
-      <p>Seaborn</p>
-    </div>
-    <div class="skill-card">
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/scikitlearn.svg" alt="ML">
-      <p>Machine Learning</p>
-    </div>
-    <div class="skill-card">
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/tensorflow.svg" alt="TensorFlow">
-      <p>TensorFlow</p>
-    </div>
-    <div class="skill-card">
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/apachespark.svg" alt="Spark">
-      <p>Apache Spark</p>
+
+    <!-- Data Engineering / IoT - DESPLEGABLE -->
+    <div class="skill-main-card skill-expandable" onclick="toggleSkills('data-eng')">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/apachekafka.svg" alt="Data Engineering">
+      <h3>Data Engineering</h3>
+      <p>Clic para ver →</p>
+      <div class="sub-skills" id="data-eng">
+        <div class="sub-skill">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/apachekafka.svg" alt="Kafka">
+          <p>Kafka</p>
+        </div>
+        <div class="sub-skill">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/docker.svg" alt="Docker">
+          <p>Docker</p>
+        </div>
+        <div class="sub-skill">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/fastapi.svg" alt="FastAPI">
+          <p>FastAPI</p>
+        </div>
+        <div class="sub-skill">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/streamlit.svg" alt="Streamlit">
+          <p>Streamlit</p>
+        </div>
+        <div class="sub-skill">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/grafana.svg" alt="Grafana">
+          <p>Grafana</p>
+        </div>
+        <div class="sub-skill">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/minio.svg" alt="MinIO">
+          <p>MinIO</p>
+        </div>
+        <div class="sub-skill">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/apachezookeeper.svg" alt="Zookeeper">
+          <p>Zookeeper</p>
+        </div>
+      </div>
     </div>
   </div>
 
   <h2>Proyectos destacados</h2>
+
+  <!-- 🌎 Sistema IoT -->
+  <div class="card iot">
+    <div class="project-badge">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@10/icons/internetofthings.svg" width="20">
+      <span>IoT · Data Engineering</span>
+    </div>
+    <h3>🌎 Sistema IoT para Monitoreo Ambiental</h3>
+    <p>Pipeline completo de datos en tiempo real para calidad del aire. Procesa 1000+ eventos/segundo con arquitectura de microservicios, streaming con Kafka, almacenamiento híbrido (Data Lake + DWH) y dashboards interactivos.</p>
+    <div class="tech-stack">
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">Kafka</span>
+      <span class="tech-tag">Docker</span>
+      <span class="tech-tag">PostgreSQL</span>
+      <span class="tech-tag">MinIO</span>
+      <span class="tech-tag">Streamlit</span>
+      <span class="tech-tag">Grafana</span>
+      <span class="tech-tag">FastAPI</span>
+    </div>
+    <a class="btn-repo" href="https://github.com/balvin07/Air-quality-pipeline" target="_blank" rel="noopener noreferrer">Ver repo</a>
+  </div>
 
   <!-- Spotify -->
   <div class="card">
@@ -121,6 +213,12 @@
     </div>
     <h3>¿Qué hace viral a Shakira?</h3>
     <p>Modelo Random Forest que predice éxito de canciones con 85 % accuracy usando API de Spotify.</p>
+    <div class="tech-stack">
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">Pandas</span>
+      <span class="tech-tag">Matplotlib</span>
+      <span class="tech-tag">Machine Learning</span>
+    </div>
     <a class="btn-repo" href="https://github.com/balvin07/Proyecto-Spotify" target="_blank" rel="noopener noreferrer">Ver repo</a>
   </div>
 
@@ -132,6 +230,11 @@
     </div>
     <h3>Encuestas Hotel</h3>
     <p>App Django que reemplaza formularios papel por un formulario responsive con estrellas.</p>
+    <div class="tech-stack">
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">Django</span>
+      <span class="tech-tag">SQLITE</span>
+    </div>
     <a class="btn-repo" href="https://github.com/balvin07/hotel" target="_blank" rel="noopener noreferrer">Ver repo</a>
   </div>
 
@@ -142,6 +245,25 @@
 <footer style="text-align:center;width:100%">
   Hecho con ❤️ y GitHub Pages
 </footer>
+
+<script>
+function toggleSkills(id) {
+  const element = document.getElementById(id);
+  const card = element.closest('.skill-expandable');
+  
+  // Cerrar otros expandibles
+  document.querySelectorAll('.sub-skills').forEach(el => {
+    if (el.id !== id) {
+      el.classList.remove('show');
+      el.closest('.skill-expandable').classList.remove('active');
+    }
+  });
+  
+  // Toggle el actual
+  element.classList.toggle('show');
+  card.classList.toggle('active');
+}
+</script>
 
 </body>
 </html>
